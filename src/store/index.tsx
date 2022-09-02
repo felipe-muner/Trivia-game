@@ -4,17 +4,25 @@ import api from "../api";
 
 interface QuestionState {
   questions: IQuestion[];
-  indexQuestion: number;
   answers: string[];
+  indexQuestion: number;
   getQuestions: () => void;
   playAgain: () => void;
   answerQuestion: (answerQuestion: string) => void;
 }
 
-export const useStore = create<QuestionState>((set, get) => ({
+const initialState: {
+  questions: IQuestion[];
+  answers: string[];
+  indexQuestion: number;
+} = {
   questions: [],
   answers: [],
-  indexQuestion: 0,
+  indexQuestion: 0
+}
+
+export const useStore = create<QuestionState>((set, get) => ({
+  ...initialState,
   getQuestions: async () => {
     const { data: { results } } = await api.question.getQuestions();
     set({ questions: results })
@@ -26,6 +34,6 @@ export const useStore = create<QuestionState>((set, get) => ({
     }))
   },
   playAgain: () => {
-    set(() => ({ answers: [], indexQuestion: 0 }))
+    set(() => ({ ...initialState }))
   }
 }));

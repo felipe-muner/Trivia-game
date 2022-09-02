@@ -4,10 +4,12 @@ import { decodeHTMLEntities } from "../utils";
 const ResultReport = () => {
   const questions = useStore((state) => state.questions);
   const answers = useStore((state) => state.answers);
+  
   const questionsWithUserAnswer = questions.map((it, i) => ({
     ...it,
     ...(it.correct_answer === answers[i] && { user_answer: true }),
   }));
+
   const scored = questionsWithUserAnswer.filter((it) =>
     Boolean(it.user_answer)
   ).length;
@@ -15,7 +17,7 @@ const ResultReport = () => {
   return (
     <>
       <div className="App-text-box">
-        <h4 className="App-main-title">
+        <h4 className="App-main-title" style={{marginBottom: "5px"}}>
           You Scored
           <br />
           {`${scored} / ${questions.length}`}
