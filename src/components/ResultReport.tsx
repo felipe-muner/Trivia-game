@@ -1,6 +1,7 @@
 import { useStore } from "../store";
+import { decodeHTMLEntities } from "../utils";
 
-export default function ResultCard() {
+const ResultReport = () => {
   const questions = useStore((state) => state.questions);
   const answers = useStore((state) => state.answers);
   const questionsWithUserAnswer = questions.map((it, i) => ({
@@ -12,17 +13,21 @@ export default function ResultCard() {
   ).length;
 
   return (
-    <div className="Quiz-question-card">
+    <div className="Result-report-card">
       <h2>You Scored</h2>
       <h2>{`${scored} / ${questions.length}`}</h2>
       <ul>
         {questionsWithUserAnswer.map((it, index) => {
-          const isCorrect = it.user_answer?.toString();
+          const isCorrect = it.user_answer ? "+" : "-";
           return (
-            <li key={index.toString()}>{`${isCorrect} - ${it.question}`}</li>
+            <li key={index.toString()}>{`${isCorrect}  ${decodeHTMLEntities(
+              it.question
+            )}`}</li>
           );
         })}
       </ul>
     </div>
   );
-}
+};
+
+export default ResultReport;

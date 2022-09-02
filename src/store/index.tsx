@@ -29,27 +29,3 @@ export const useStore = create<QuestionState>((set, get) => ({
     set(() => ({ answers: [], indexQuestion: 0 }))
   }
 }));
-
-// export const usersStore = create((set, get) => ({
-//     users: [],
-//     loading: false,
-//     hasErrors: false,
-//     getUser: (user) => get().users.find((it) => it.id === user.id),
-//     addUser: (user) => set(() => ({ users: [...get().users, user] })),
-//     removeAll: () => set(() => ({ users: [] })),
-//     deleteUser: (user) => set(() => ({ users: get().users.filter((it) => it.id !== user.id) })),
-//     updateUser: (user) => set(() => ({
-//       users: get().users.map((it) => ((it.id === user.id)
-//         ? { id: '50', name: 'felipe updated' }
-//         : it)),
-//     })),
-//     getUsers: async () => {
-//       set(() => ({ loading: true }));
-//       try {
-//         const response = await api.user.getUsers();
-//         set(() => ({ users: response.data, loading: false }));
-//       } catch (err) {
-//         set(() => ({ hasErrors: true, loading: false }));
-//       }
-//     },
-//   }));

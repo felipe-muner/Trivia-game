@@ -7,19 +7,11 @@ import { useEffect } from "react";
 export default function Quiz() {
   const navigate = useNavigate();
   const questions = useStore((state) => state.questions);
-  const indexQuestion = useStore((state) => state.indexQuestion);  
-  const answers = useStore((state) => state.answers);  
+  const indexQuestion = useStore((state) => state.indexQuestion);
 
-  useEffect(() => {
-    if (indexQuestion + 1 > questions.length) {
-      navigate("/result");
-    }
+  useEffect(() => {    
+    if (indexQuestion + 1 > questions.length) navigate("/result")
   }, [navigate, indexQuestion, questions.length]);
 
-  return (
-    <>
-      {JSON.stringify(answers)}
-      <QuestionCard />
-    </>
-  );
+  return <QuestionCard />;
 }
