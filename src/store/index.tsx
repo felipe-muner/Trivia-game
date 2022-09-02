@@ -5,20 +5,20 @@ import api from "../api";
 interface QuestionState {
   questions: IQuestion[];
   indexQuestion: number;
-  answers: boolean[];
+  answers: string[];
   getQuestions: () => void;
   playAgain: () => void;
-  answerQuestion: (answerQuestion: boolean) => void;
+  answerQuestion: (answerQuestion: string) => void;
 }
 
 export const useStore = create<QuestionState>((set, get) => ({
   questions: [],
   answers: [],
+  indexQuestion: 0,
   getQuestions: async () => {
     const { data: { results } } = await api.question.getQuestions();
     set({ questions: results })
   },
-  indexQuestion: 0,
   answerQuestion: (answer) => {
     set(() => ({ 
       indexQuestion: get().indexQuestion + 1,
@@ -26,7 +26,7 @@ export const useStore = create<QuestionState>((set, get) => ({
     }))
   },
   playAgain: () => {
-    set(() => ({ answers: [] }))
+    set(() => ({ answers: [], indexQuestion: 0 }))
   }
 }));
 
