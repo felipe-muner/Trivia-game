@@ -1,24 +1,27 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useEffect } from "react";
+import "./styles/App.css";
+import { useStore } from "./store";
+import { Link, useNavigate } from "react-router-dom";
 
 function App() {
+  let navigate = useNavigate();
+  const getQuestions = useStore((state) => state.getQuestions);  
+  
+  useEffect(() => {
+    getQuestions();
+  }, [getQuestions]);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Link to="/">Welcome</Link> | 
+      <Link to="/quiz">Quiz</Link> |{" "}
+      <Link to="/result">Result</Link>
+      <div className="App-welcome">
+        <h2>Welcome to the Trivia Challenge</h2>
+        <h3>You will be presented with 10 True or False questions.</h3>
+        <h3>Can you score 100%?</h3>
+        <button onClick={() => navigate("/quiz")}>BEGIN</button>
+      </div>
     </div>
   );
 }
