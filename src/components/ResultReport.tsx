@@ -13,20 +13,26 @@ const ResultReport = () => {
   ).length;
 
   return (
-    <div className="Result-report-card">
-      <h2>You Scored</h2>
-      <h2>{`${scored} / ${questions.length}`}</h2>
-      <ul>
+    <>
+      <div className="App-text-box">
+        <h4 className="App-main-title">
+          You Scored
+          <br />
+          {`${scored} / ${questions.length}`}
+        </h4>
+      </div>
+      <ul className="App-report-list">
         {questionsWithUserAnswer.map((it, index) => {
           const isCorrect = it.user_answer ? "+" : "-";
           return (
-            <li key={index.toString()}>{`${isCorrect}  ${decodeHTMLEntities(
-              it.question
-            )}`}</li>
+            <li className="App-report-item" key={index.toString()}>
+              <span className="App-correct-sign">{`${isCorrect}`}</span>
+              <span>{`${decodeHTMLEntities(it.question)}`}</span>
+            </li>
           );
         })}
       </ul>
-    </div>
+    </>
   );
 };
 

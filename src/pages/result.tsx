@@ -11,9 +11,13 @@ export default function Result() {
     navigate("/");
   };
   return (
-    <div>
-      <ResultReport />
-      <button onClick={() => handlePlayAgain()}>PLAY AGAIN</button>
+    <div className="App-main">
+      <div className="App-content">
+        <ResultReport />
+        <div>
+          <button className="App-btn" onClick={() => handlePlayAgain()}>PLAY AGAIN ?</button>
+        </div>
+      </div>
     </div>
   );
 }

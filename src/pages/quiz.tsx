@@ -14,7 +14,6 @@ export default function Quiz() {
     if (indexQuestion + 1 > questions.length) navigate("/result");
   }, [navigate, indexQuestion, questions.length]);
 
-  // return  <QuestionCard />;
   return (
     <div className="App-main">
       <div className="App-content">

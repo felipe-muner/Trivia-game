@@ -50,3 +50,18 @@
 .App-question-control {
   font-size: calc(12px + 1vmin);
 }
+
+.App-report-item{
+  text-align: left;
+  font-size: calc(6px + 1vmin);
+  list-style-type: none;
+  margin-bottom: 10px;
+}
+
+.App-report-list{
+  padding-left: 0px;
+}
+
+.App-correct-sign{
+  font-size: calc(12px + 1vmin);
+}
