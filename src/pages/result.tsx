@@ -1,11 +1,12 @@
 import { useStore } from "../store";
 import ResultReport from "../components/ResultReport";
 import { useNavigate } from "react-router-dom";
+import { checkRequirements } from "../utils/hocs/checkRequirements";
 
-export default function Result() {
+function Result() {
   const navigate = useNavigate();
   const playAgain = useStore((state) => state.playAgain);
-
+  
   const handlePlayAgain = () => {
     playAgain();
     navigate("/");
@@ -21,3 +22,5 @@ export default function Result() {
     </div>
   );
 }
+
+export default checkRequirements(Result);

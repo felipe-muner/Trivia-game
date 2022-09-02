@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import "./styles/App.css";
 import { useStore } from "./store";
 import { useNavigate } from "react-router-dom";
+import { checkRequirements } from "./utils/hocs/checkRequirements";
 
 function App() {
   let navigate = useNavigate();
@@ -29,4 +30,4 @@ function App() {
   );
 }
 
-export default App;
+export default checkRequirements(App);
