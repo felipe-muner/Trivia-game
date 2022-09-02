@@ -1,10 +1,10 @@
 import { useStore } from "../store";
-import "../styles/Quiz.css";
 import QuestionCard from "../components/QuestionCard";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
+import { checkRequirements } from "../utils/hocs/checkRequirements";
 
-export default function Quiz() {
+const Quiz = () => {
   const navigate = useNavigate();
   const questions = useStore((state) => state.questions);
   const indexQuestion = useStore((state) => state.indexQuestion);
@@ -31,4 +31,6 @@ export default function Quiz() {
       </div>
     </div>
   );
-}
+};
+
+export default checkRequirements(Quiz);

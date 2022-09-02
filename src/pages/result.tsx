@@ -3,7 +3,7 @@ import ResultReport from "../components/ResultReport";
 import { useNavigate } from "react-router-dom";
 import { checkRequirements } from "../utils/hocs/checkRequirements";
 
-function Result() {
+const Result = () => {
   const navigate = useNavigate();
   const playAgain = useStore((state) => state.playAgain);
   

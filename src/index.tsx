@@ -2,8 +2,8 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
-import Result from "./pages/result";
-import Quiz from "./pages/quiz";
+import Result from "./pages/Result";
+import Quiz from "./pages/Quiz";
 
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
